@@ -21,6 +21,8 @@
  */
 #pragma once
 
+#define CONFIG_EXAMPLES_DIR "Creality/Ender-5 Pro"
+
 /**
  * Configuration_adv.h
  *
@@ -597,8 +599,9 @@
 #define QUICK_HOME                       // If homing includes X and Y, do a diagonal move initially
 //#define HOMING_BACKOFF_MM { 2, 2, 2 }  // (mm) Move away from the endstops after homing
 
-// When G28 is called, this option will make Y home before X
-//#define HOME_Y_BEFORE_X
+#define QUICK_HOME                            // If G28 contains XY do a diagonal move first
+//#define HOME_Y_BEFORE_X                     // If G28 contains XY home Y before X
+//#define CODEPENDENT_XY_HOMING               // If X/Y can't home without homing Y/X first
 
 // Enable this if X or Y can't home without homing the other axis first.
 //#define CODEPENDENT_XY_HOMING
@@ -2784,6 +2787,11 @@
  *  - G92 will revert to its behavior from Marlin 1.0.
  */
 //#define NO_WORKSPACE_OFFSETS
+
+// Extra options for the M114 "Current Position" report
+//#define M114_DETAIL         // Use 'M114` for details to check planner calculations
+//#define M114_REALTIME       // Real current position based on forward kinematics
+//#define M114_LEGACY         // M114 used to synchronize on every call. Enable if needed.
 
 /**
  * Set the number of proportional font spaces required to fill up a typical character space.
